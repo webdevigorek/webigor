@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Vvod teksta</title>
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="style/stylela.css">
+    <link rel="stylesheet" href="style/normalize.css">
+    <script src="js/modernizr.js" type="text/javascript"></script>
+    <script src="js/jQuery.js"></script>
+    <script src="js/script.js"></script>
+  </head>
+  <body>
+  	<header></header>
+  	<section>
+  	<div id="bar" class="wrapper">
+    <div class="content">
+  	<div class="demo-wrapper html5-progress-bar">
+		<div class="progress-bar-wrapper">
+			<progress id="progressbar" value="0" max="100" class = prog></progress>
+			<span class="progress-value">0%</span>
+		</div>
+	</div>
+</div>
+	<button onclick="domRangehighlight('massiv[i]'); this.style.display = 'none';" class = "knopka"> Выполнить </button>
+</div>
+  	<textarea id="text" type="text" name="task" class="mytext"></textarea>
+    <p id="resultaty" class = "resul"></p>
+  	</section>	
+  	<footer></footer>
+  	<script>
+    function domRangehighlight(massiv) {
+      var root = document.getElementById('text').firstChild;
+      var content = root.nodeValue;
+      if (~content.indexOf(massiv[i])) {
+        if (document.createRange) {
+          var rng = document.createRange();
+          rng.setStart(root, content.indexOf(massiv[i]));
+          rng.setEnd(root, content.indexOf(massiv[i])) + massiv.length;
+          var highlightDiv = document.createElement('span');
+          highlightTextarea.style.backgroundColor = 'blue';
+          rng.surroundContents(highlightTextarea);
+        } else
+          alert('Вероятно, у вас IE8-, смотрите реализацию TextRange ниже');
+      } else
+        alert('Совпадений не найдено');
+    }
+    domRangehighlight(massiv);
+  </script>
+  </body>
+  </html>	
